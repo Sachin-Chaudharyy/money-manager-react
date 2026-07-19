@@ -87,7 +87,7 @@ const Income = () => {
             toast.error('Please select a category');
             return;
         }
-
+``
         try{
             const response = await axiosConfig.post(API_ENDPOINTS.ADD_INCOME, {
                 name,
