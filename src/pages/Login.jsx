@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets"; // adjust path
-import Input from "../components/input";
+import Input from "../components/Input";
 import { validateEmail } from '../util/validation';
 import axiosConfig from "../util/axiosConfig"; 
 import { Loader, LoaderCircle } from "lucide-react";
