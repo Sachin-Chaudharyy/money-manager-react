@@ -8,6 +8,9 @@ import Filter from "./pages/Filter.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Landing from "./pages/Landing.jsx";
+import { useState, useEffect } from "react";
+import axiosConfig from "./util/axiosConfig";
+import { API_ENDPOINTS } from "./util/apiEndPoints";
 
 const App = () => {
   return (
@@ -30,7 +33,24 @@ const App = () => {
 }
 
 const Root = () => {
-  const isAuthenticated = !!localStorage.getItem("token");
-  return isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />;
+  const [status, setStatus] = useState("checking"); // "checking" | "valid" | "invalid"
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setStatus("invalid");
+      return;
+    }
+
+    axiosConfig.get(API_ENDPOINTS.GET_USER_INFO)
+      .then(() => setStatus("valid"))
+      .catch(() => {
+        localStorage.removeItem("token");
+        setStatus("invalid");
+      });
+  }, []);
+
+  if (status === "checking") return null; // could show a spinner here instead
+  return status === "valid" ? <Navigate to="/dashboard" /> : <Landing />;
 }
 export default App;
