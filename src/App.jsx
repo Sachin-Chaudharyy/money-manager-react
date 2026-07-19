@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Toaster } from "react-hot-toast"; // or wherever your Toaster is from
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home.jsx";
 import Income from "./pages/Income.jsx";
 import Expense from "./pages/Expense.jsx";
@@ -7,11 +7,12 @@ import Category from "./pages/Category.jsx";
 import Filter from "./pages/Filter.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
+import Landing from "./pages/Landing.jsx";
 
 const App = () => {
   return (
     <>
-    <Toaster />
+      <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Root />} />
@@ -30,10 +31,6 @@ const App = () => {
 
 const Root = () => {
   const isAuthenticated = !!localStorage.getItem("token");
-  return isAuthenticated ? (
-    <Navigate to="/dashboard" />
-  ) : (
-    <Navigate to="/login" />
-  );
+  return isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />;
 }
 export default App;

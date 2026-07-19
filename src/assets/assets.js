@@ -1,10 +1,14 @@
 import logo from "./logo.jpg";
 import login_bg from "./login-bg.jpg"
+import landing_bg from "./landing_bg.jpg";
+import landing_bg_2 from "./landing_bg_2.webp"
 import { Coins, FunnelPlus, LayoutDashboard, List, Wallet } from "lucide-react";
 
 export const assets = {
     logo,
-    login_bg
+    login_bg,
+    landing_bg,
+    landing_bg_2
 }
 export const SIDE_BAR_DATA = [
     {
