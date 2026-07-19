@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Input from "../components/Input";
 import { validateEmail } from '../util/validation';
 import axiosConfig from "../util/axiosConfig"; 
@@ -15,6 +15,7 @@ const Login = () => {
     const[error, setError] = useState(null);
     const[isLoading, setIsLoading] = useState(false);
     const {setUser} = useContext(AppContext);
+    const [searchParams] = useSearchParams();
 
     const navigate = useNavigate();
 
@@ -57,6 +58,15 @@ const Login = () => {
             setIsLoading(false);
         }
     }
+
+    useEffect(() => {
+        const activated = searchParams.get("activated");
+        if (activated === "true") {
+            toast.success("Account activated! Please log in.");
+        } else if (activated === "false") {
+            toast.error("Activation link invalid or already used.");
+        }
+    }, [searchParams]);
 
     return (
         <div className="h-screen w-full relative flex items-center justify-center overflow-hidden">

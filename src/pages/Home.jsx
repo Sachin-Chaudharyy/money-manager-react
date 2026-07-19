@@ -31,7 +31,7 @@ const Home = () => {
             }
         }catch(error){
             console.error('Something went wrong while fetching dashboard data', error);
-            if(error.response?.status !== 401){
+            if(error.response?.status !== 401 && error.response?.status !== 403){
                 toast.error(error.response?.data?.message || 'Something went wrong!');
             }
         }finally{
