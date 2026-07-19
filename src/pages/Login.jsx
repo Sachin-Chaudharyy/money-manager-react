@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { assets } from "../assets/assets"; 
 import Input from "../components/Input";
 import { validateEmail } from '../util/validation';
 import axiosConfig from "../util/axiosConfig"; 
@@ -8,6 +7,7 @@ import { Loader, LoaderCircle } from "lucide-react";
 import { API_ENDPOINTS } from "../util/apiEndPoints";
 import toast, { Toaster } from "react-hot-toast";
 import { AppContext } from "../Context/AppContext";
+import { assets } from "../assets/assets";
 
 const Login = () => {
     const[email, setEmail] = useState("");
