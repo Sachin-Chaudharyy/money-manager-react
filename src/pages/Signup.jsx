@@ -113,7 +113,7 @@ const Signup = () => {
                         Start tracking your spendings by joining with us.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-2">
+                    <form onSubmit={handleSubmit} className="space-y-1">
                         <div className="flex justify-center mb-6">
                             <ProfilePhotoSelector image={profilePhoto} setImage={setProfilePhoto} />
                         </div>
