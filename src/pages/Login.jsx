@@ -8,6 +8,7 @@ import { API_ENDPOINTS } from "../util/apiEndPoints";
 import toast, { Toaster } from "react-hot-toast";
 import { AppContext } from "../Context/AppContext";
 import { assets } from "../assets/assets";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
     const[email, setEmail] = useState("");
@@ -58,6 +59,29 @@ const Login = () => {
             setIsLoading(false);
         }
     }
+
+    const handleGoogleLogin = async (credentialResponse) => {
+        setIsLoading(true);
+        try {
+            const response = await axiosConfig.post(API_ENDPOINTS.GOOGLE_LOGIN, {
+                idToken: credentialResponse.credential
+            });
+            if (response.status === 200) {
+                localStorage.setItem("token", response.data.token);
+                toast.success("Logged in successfully!");
+                navigate("/dashboard");
+            }
+        } catch (err) {
+            console.error('Google login failed', err);
+            if(err.response && err.response.data && err.response.data.message){
+                toast.error(err.response.data.message);
+            } else {
+                toast.error("Google login failed. Please try again.");
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
         const activated = searchParams.get("activated");
@@ -114,6 +138,20 @@ const Login = () => {
                                 "LOGIN"
                             )}
                         </button>
+                        
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="flex-1 h-px bg-gray-300"></div>
+                            <span className="text-sm text-gray-500">or</span>
+                            <div className="flex-1 h-px bg-gray-300"></div>
+                        </div>
+
+
+                        <div className="flex justify-center mb-4">
+                            <GoogleLogin
+                                onSuccess={handleGoogleLogin}
+                                onError={() => toast.error("Google login failed")}
+                            />
+                        </div>
 
                         <p className="text-sm text-slate-800 text-center mt-6">
                             Don't have an account?

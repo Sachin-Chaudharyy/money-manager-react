@@ -1,5 +1,5 @@
-export const BASE_URL = "https://money-manager-1-88ep.onrender.com/api/v1.0";
-// export const BASE_URL = "http://localhost:8080/api/v1.0";
+// export const BASE_URL = "https://money-manager-1-88ep.onrender.com/api/v1.0";
+export const BASE_URL = "http://localhost:8080/api/v1.0";
 const CLOUDINARY_CLOUD_NAME = "duraynuf";
 
 export const API_ENDPOINTS = {
@@ -22,5 +22,7 @@ export const API_ENDPOINTS = {
     EMAIL_EXPENSE: "/email/expense-excel",
     APPLY_FILTERS: "/filter",
     DASHBOARD_DATA: "/dashboard",
+    AI_CHAT: "/chat",
+    GOOGLE_LOGIN: "/auth/google",
     UPLOAD_IMAGE: `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`
 }
