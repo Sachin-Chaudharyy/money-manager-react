@@ -96,9 +96,6 @@ const Signup = () => {
             setIsLoading(false);
         }
     };
-
-    console.log("Client ID being used:", import.meta.env.VITE_GOOGLE_CLIENT_ID);
-
     return (
         <div className="h-screen w-full relative flex items-center justify-center overflow-hidden">
             {/* {Background image with blur} */}
