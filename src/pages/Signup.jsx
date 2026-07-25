@@ -111,7 +111,7 @@ const Signup = () => {
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-1">
-                        <div className="flex justify-center mb-6">
+                        <div className="flex justify-center mb-5">
                             <ProfilePhotoSelector image={profilePhoto} setImage={setProfilePhoto} />
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
