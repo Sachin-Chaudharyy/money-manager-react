@@ -1,16 +1,85 @@
-# React + Vite
+# 💰 Money Manager — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The pretty face of Money Manager 💅 — a React app where you can sign up, log in (with a password *or* just your Google account), and soon, actually see where all your money disappears to every month.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌸 What this is
 
-## React Compiler
+This is the frontend for **Money Manager**, a personal finance tracker. It talks to a Spring Boot backend to handle auth, and is built to feel simple, clean, and a little bit soft around the edges.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer | Tech |
+|---|---|
+| Library | React |
+| Bundler | Vite ⚡ |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| HTTP | Axios |
+| Auth | JWT + Google OAuth (`@react-oauth/google`) |
+| Notifications | react-hot-toast 🍞 |
+| Icons | lucide-react |
+
+---
+
+## ✨ Features
+
+- 📝 **Signup & Login pages** with clean validation and helpful error toasts
+- 🔵 **"Continue with Google"** button — because typing passwords is overrated
+- 🖼️ **Profile photo upload** during signup
+- 🔔 **Toast notifications** for every success and every "oops"
+- 🔐 **JWT stored client-side**, auto-attached to authenticated requests
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+├── components/     → Reusable UI bits (Input, ProfilePhotoSelector, etc.)
+├── pages/          → Signup, Login, Dashboard, and friends
+├── util/           → axiosConfig, API endpoints, validation helpers
+├── Context/        → Global app context
+└── assets/         → Images & static files
+```
+
+---
+
+## ⚙️ Getting Started Locally
+
+### 1. Clone it
+```bash
+git clone https://github.com/Sachin-Chaudharyy/money-manager-react.git
+cd money-manager-react
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Set up your environment variables
+Create a `.env` file in the root:
+```
+VITE_GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+```
+
+### 4. Run the dev server
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173` and you're in 🎀
+
+---
+
+## 🔗 Connecting to the Backend
+
+Make sure your backend is running (see the [backend repo](https://github.com/Sachin-Chaudharyy/money-manager)) and that `apiEndPoints.js` points to the right `BASE_URL` — `localhost:8080` for local dev, or your deployed backend URL for production.
+
+---
+
+Made with 🩷, Tailwind, and way too many `toast.error()` calls.
